@@ -19,7 +19,7 @@ commits](https://img.shields.io/github/commits-since/epiforecasts/EpiNow2/v1.4.0
 
 ## Overview
 <p style="font-family: Arial, sans-serif; font-size: 14px;">
-  Data4health was developed within the HARMONIZE project. HARMONIZE aims to develop cost-effective and reproducible digital tools for stakeholders in hotspots affected by a changing climate in Latin America & the Caribbean (LAC), including cities, small islands, highlands, and the Amazon rainforest.
+  data4health was developed within the HARMONIZE project. HARMONIZE aims to develop cost-effective and reproducible digital tools for stakeholders in hotspots affected by a changing climate in Latin America & the Caribbean (LAC), including cities, small islands, highlands, and the Amazon rainforest.
 </p>
 <p style="font-family: Arial, sans-serif; font-size: 14px;">
   The HARMONIZE digital toolkits will allow local researchers and users, including national disease control programs, to link, interrogate and use multi-scale spatiotemporal data, to understand the links between environmental change and infectious disease risk in their local context, and to build robust early warning and response systems in low-resource settings.
@@ -53,8 +53,25 @@ commits](https://img.shields.io/github/commits-since/epiforecasts/EpiNow2/v1.4.0
       Used for creating complex plots from data in a data frame.<br>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="https://cran.r-project.org/web/packages/shiny/index.html" target="_blank">
+        <img src="" height="50" alt="shiny logo">
+      </a>
+    </td>
+    <td align="left">
+      <strong>shiny</strong><br>
+      Facilitates building interactive web apps straight from R.<br>
+    </td>
+  </tr>
 </table>
 
+If not yet installed, users can install dependencies with the following lines.
+```r
+install.packages("ncdf4")
+install.packages("raster")
+install.packages("ggplot2")
+```
 
 
 ## Installation
@@ -71,11 +88,11 @@ remotes::install_github("your_username/your_package_name")
 
 ## How to Use it / Vignette
 
-This document provides a guide to working with NetCDF files in R using the `ncdf4` and `raster` packages. The following example demonstrates how to read a NetCDF file, extract data, and visualize it.
+There are two main functionalities of data4health. For code-experienced users, a series a functions to support health data analysis are provided that useres can implement to simplify their existing data pipeline. Users with less code experience can employ the graphic user interface to clean and aggregate their data in a user friendly way.
 
 <details>
 <summary>
-  Vignette
+ Functions
 </summary>
   
 ## Prerequisites
@@ -90,55 +107,45 @@ install.packages("ggplot2")
 
 ## R script
 ```r
-# Load necessary libraries
-library(ncdf4)
-library(raster)
-library(ggplot2)
-
-# Set the path to your NetCDF file
-nc_file <- "path/to/your/file.nc"
-
-# Open the NetCDF file
-nc <- nc_open(nc_file)
-
-# Print the NetCDF file summary
-print(nc)
-
-# Extract data from a specific variable (e.g., 'temperature')
-# Replace 'temperature' with the actual variable name in your NetCDF file
-var_name <- "temperature"
-temperature <- ncvar_get(nc, var_name)
-
-# Get the dimensions of the data
-lon <- ncvar_get(nc, "lon")
-lat <- ncvar_get(nc, "lat")
-time <- ncvar_get(nc, "time")
-
-# Close the NetCDF file
-nc_close(nc)
-
-# Create a raster layer for the first time step (if applicable)
-# Modify the indexing based on your data structure
-r <- raster(t(temperature[,,1]), xmn=min(lon), xmx=max(lon), ymn=min(lat), ymx=max(lat), crs=CRS("+proj=longlat +datum=WGS84"))
-
-# Plot the raster layer using base R plot
-plot(r, main=paste("Temperature at Time Step 1"))
-
-# Convert the raster to a data frame for ggplot2 visualization
-r_df <- as.data.frame(r, xy=TRUE)
-
-# Plot the raster layer using ggplot2
-ggplot(r_df, aes(x=x, y=y, fill=layer)) +
-  geom_raster() +
-  coord_fixed() +
-  scale_fill_viridis_c() +
-  labs(title="Temperature at Time Step 1", x="Longitude", y="Latitude", fill="Temperature") +
-  theme_minimal()
 ```
+</details>
+<details>
+<summary>
+Graphic user interface
+</summary>
+
+## Load GUI
+Once data4health is loaded, the user interface can be 
+
+```r
+library(data4health)
+run_gui()
+```
+## Clean
+
+## Aggregate
+
+## Visualise
+
+
 </details>
 
 ## Resources
 
+<details>
+<summary>
+Other HARMONIZE tools
+</summary>
+
+HARMONIZE collates existing multi-source climate, environmental, socio-economic and health data, as well as collects new longitudinal ground-truth data using drone technology and low-cost weather sensors. Each data source has its own digital toolkit to allow local researchers and users, to prepare, interrogate and eventually merge the data spatio-temporally, to understand the links between environmental change and infectious disease risk in their local context, and to build robust early warning and response systems in low-resource settings. the other toolkits are:
+<ul>
+  <li>[clim4health](https://github.com/harmonize-tools/clim4health)</li>
+  <li>[land4health](https://github.com/harmonize-tools/land4health)</li>
+  <li>[drone4health](https://github.com/harmonize-tools/drone4health))</li>
+  <li>[socio4health](https://github.com/harmonize-tools/socio4health)</li>
+</ul>
+
+</details>
 <details>
 <summary>
 Package Website
