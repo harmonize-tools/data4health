@@ -64,13 +64,38 @@ commits](https://img.shields.io/github/commits-since/epiforecasts/EpiNow2/v1.4.0
       Facilitates building interactive web apps straight from R.<br>
     </td>
   </tr>
+  
+  <tr>
+    <td align="center">
+      <a href="https://rstudio.github.io/leaflet/" target="_blank">
+        <img src="https://filippomariaraeli.com/post/leaflet/summary/featured.png" height="50" alt="leaflet logo">
+      </a>
+    </td>
+    <td align="left">
+      <strong>leaflet</strong><br>
+      Leaflet makes it easy to create mobile-friendly interactive maps from R. <br>
+    </td>
+  </tr>
+  
+  <tr>
+    <td align="center">
+      <a href="https://lubridate.tidyverse.org/" target="_blank">
+        <img src="https://lubridate.tidyverse.org/logo.png" height="50" alt="shiny logo">
+      </a>
+    </td>
+    <td align="left">
+      <strong>lubridate</strong><br>
+      Lubridate makes it easier to do the things R does with date-times and possible to do the things R does not.<br>
+    </td>
+  </tr>
 </table>
 
 If not yet installed, users can install dependencies with the following lines.
 ```r
-install.packages("ncdf4")
-install.packages("raster")
-install.packages("ggplot2")
+packages <- c("dplyr", "DT", "foreign",  "ggplot2", "lubridate", "leaflet",
+               "shinyWidgets", "shiny", "shinycssloaders",  "sf", "zoo", "read.dbc")
+devtools::install_github("danicat/read.dbc")
+install.packages(setdiff(packages, rownames(installed.packages())), repos = "http://cran.us.r-project.org")
 ```
 
 
@@ -95,18 +120,22 @@ There are two main functionalities of data4health. For code-experienced users, a
  Functions
 </summary>
   
-## Prerequisites
+#### Cleaning
 
 Before running the script, ensure you have the necessary packages installed. You can install them using the following commands:
 
 ```r
-install.packages("ncdf4")
-install.packages("raster")
-install.packages("ggplot2")
+clean_data()
 ```
 
-## R script
+#### Aggregating
 ```r
+aggregate_data()
+```
+
+#### Visualise
+```r
+plot_map()
 ```
 </details>
 <details>
@@ -114,18 +143,18 @@ install.packages("ggplot2")
 Graphic user interface
 </summary>
 
-## Load GUI
+#### Load GUI
 Once data4health is loaded, the user interface can be 
 
 ```r
 library(data4health)
 run_gui()
 ```
-## Clean
+#### Clean
 
-## Aggregate
+#### Aggregate
 
-## Visualise
+#### Visualise
 
 
 </details>
@@ -139,10 +168,10 @@ Other HARMONIZE tools
 
 HARMONIZE collates existing multi-source climate, environmental, socio-economic and health data, as well as collects new longitudinal ground-truth data using drone technology and low-cost weather sensors. Each data source has its own digital toolkit to allow local researchers and users, to prepare, interrogate and eventually merge the data spatio-temporally, to understand the links between environmental change and infectious disease risk in their local context, and to build robust early warning and response systems in low-resource settings. the other toolkits are:
 <ul>
-  <li>[clim4health](https://github.com/harmonize-tools/clim4health)</li>
-  <li>[land4health](https://github.com/harmonize-tools/land4health)</li>
-  <li>[drone4health](https://github.com/harmonize-tools/drone4health))</li>
-  <li>[socio4health](https://github.com/harmonize-tools/socio4health)</li>
+  <li> [clim4health](https://github.com/harmonize-tools/clim4health) </li>
+  <li> [land4health](https://github.com/harmonize-tools/land4health) </li>
+  <li> [drone4health](https://github.com/harmonize-tools/drone4health) </li>
+  <li> [socio4health](https://github.com/harmonize-tools/socio4health) </li>
 </ul>
 
 </details>
@@ -187,8 +216,8 @@ The project consists of resources and [tools](https://harmonize-tools.github.io/
 List the authors/contributors of the package and provide contact information if users have questions or feedback.
 </br>
 </br>
-<a href="https://github.com/drrachellowe">
-  <img src="https://imgs.search.brave.com/5LHcD0fArBHiqOOzb1AlCj7YGRHVMHCZcK_kYao0aos/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni80NjYxLzQ2NjEz/MTgucG5nP3NlbXQ9/YWlzX2h5YnJpZA" style="width: 50px; height: auto;" />
+<a href="https://github.com/Daniela-L">
+  <img src="https://avatars.githubusercontent.com/u/76750744?v=4" style="width: 50px; height: auto;" />
 </a>
 <span style="display: flex; align-items: center; margin-left: 10px;">
   <strong>Daniela Lührsen</strong> (developer)
