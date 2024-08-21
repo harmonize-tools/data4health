@@ -2,29 +2,38 @@
 # data4health <a href='https://www.harmonize-tools.org/'><img src='https://harmonize-tools.github.io/harmonize-logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
-
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
-[![R-CMD-check](https://github.com/epiforecasts/EpiNow2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/epiforecasts/EpiNow2/actions/workflows/R-CMD-check.yaml)
-[![MIT
-license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/epiforecasts/EpiNow2/blob/main/LICENSE.md/)
+maturing](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+<!---
 [![GitHub
-contributors](https://img.shields.io/github/contributors/epiforecasts/EpiNow2)](https://github.com/epiforecasts/EpiNow2/graphs/contributors)
-
-[![universe](https://epiforecasts.r-universe.dev/badges/EpiNow2)](http://epiforecasts.r-universe.dev/ui/#package:EpiNow2)
-[![GitHub
-commits](https://img.shields.io/github/commits-since/epiforecasts/EpiNow2/v1.4.0.svg?color=orange)](https://GitHub.com/epiforecasts/EpiNow2/commit/main/)
-[![DOI](https://zenodo.org/badge/272995211.svg)](https://zenodo.org/badge/latestdoi/272995211)
+contributors](https://img.shields.io/github/contributors/harmonize-tools/data4health)](https://github.com/harmonize-tools/data4health/graphs/contributors)
+![commits](https://badgen.net/github/commits/harmonize-tools/data4health/main)
+-->
 <!-- badges: end -->
 
 ## Overview
 <p style="font-family: Arial, sans-serif; font-size: 14px;">
-  data4health was developed within the HARMONIZE project. HARMONIZE aims to develop cost-effective and reproducible digital tools for stakeholders in hotspots affected by a changing climate in Latin America & the Caribbean (LAC), including cities, small islands, highlands, and the Amazon rainforest.
-</p>
-<p style="font-family: Arial, sans-serif; font-size: 14px;">
-  The HARMONIZE digital toolkits will allow local researchers and users, including national disease control programs, to link, interrogate and use multi-scale spatiotemporal data, to understand the links between environmental change and infectious disease risk in their local context, and to build robust early warning and response systems in low-resource settings.
 
-  <em>An R-package to make health data processing accessible to everyone</em>
+  data4health is a tool developed as part of the HARMONIZE project to facilitate the access, preprocessing, and aggregation of health data at customized spatiotemporal resolutions. Originally designed for data from Colombia, Brazil, Peru, and the Dominican Republic, the tool is intended to be adaptable for any linelist health data.
+
+The R package and offers two modes of operation based on the user's coding experience:
+<ul>
+  <li> For users with <b>coding experience</b>: A wide range of functions can be directly used within R. </li>
+  <li> For <b>non-coding users</b>: A graphical user interface (GUI) guides users through the data processing pipeline in an intuitive, user-friendly way. </li>
+</ul>
+
+Key Features of the R Package:
+
+<ul>
+  <li> Instructions on how to access health data </li>
+  <li> Functions for cleaning and preprocessing health data </li>
+  <li> Spatial harmonization, allowing aggregation to any coarser administrative unit </li>
+  <li> Temporal harmonization, enabling aggregation to epidemiological weeks or months </li>
+  <li> Data visualization capabilities</li>
+  <li> Output as a .csv file, formatted to meet user-specified requirements</li>
+</ul>
+
 </p>
 
 
@@ -98,7 +107,7 @@ devtools::install_github("danicat/read.dbc")
 install.packages(setdiff(packages, rownames(installed.packages())), repos = "http://cran.us.r-project.org")
 ```
 
-
+<!---
 ## Installation
 
 You can install the latest version of the package from GitHub using the `remotes` package:
@@ -110,6 +119,7 @@ install.packages("remotes")
 # Install the package from GitHub
 remotes::install_github("your_username/your_package_name")
 ```
+-->
 
 ## How to Use it / Vignette
 
@@ -144,18 +154,27 @@ Graphic user interface
 </summary>
 
 #### Load GUI
-Once data4health is loaded, the user interface can be 
+Once data4health is loaded, the user interface can be loaded with the following command:
 
 ```r
 library(data4health)
 run_gui()
 ```
+A browser window will automatically open, and the landing page will look like this:
+
+<img src="img/landing_page.png" width="80%" alt="cleaning UI">
+
 #### Clean
+
+<img src="img/preprocess.png" width="80%" alt="cleaning UI">
 
 #### Aggregate
 
+<img src="img/agregate.png" width="80%" alt="cleaning UI">
+
 #### Visualise
 
+<img src="img/plot.png" width="80%" alt="cleaning UI">
 
 </details>
 
@@ -168,13 +187,15 @@ Other HARMONIZE tools
 
 HARMONIZE collates existing multi-source climate, environmental, socio-economic and health data, as well as collects new longitudinal ground-truth data using drone technology and low-cost weather sensors. Each data source has its own digital toolkit to allow local researchers and users, to prepare, interrogate and eventually merge the data spatio-temporally, to understand the links between environmental change and infectious disease risk in their local context, and to build robust early warning and response systems in low-resource settings. the other toolkits are:
 <ul>
-  <li> [clim4health](https://github.com/harmonize-tools/clim4health) </li>
+  <li> [clim4health]("https://github.com/harmonize-tools/clim4health") </li>
   <li> [land4health](https://github.com/harmonize-tools/land4health) </li>
   <li> [drone4health](https://github.com/harmonize-tools/drone4health) </li>
   <li> [socio4health](https://github.com/harmonize-tools/socio4health) </li>
 </ul>
 
 </details>
+
+<!---
 <details>
 <summary>
 Package Website
@@ -183,6 +204,7 @@ Package Website
 The [`example` website](https://cran.r-project.org/) package website includes a function reference, a model outline, and case studies using the package. The site mainly concerns the release version, but you can also find documentation for the latest development version.
 
 </details>
+-->
 <details>
 <summary>
 Organisation Website
@@ -190,10 +212,12 @@ Organisation Website
 
 [Harmonize](https://www.harmonize-tools.org/) is an international develop cost-effective and reproducible digital tools for stakeholders in hotspots affected by a changing climate in Latin America & the Caribbean (LAC), including cities, small islands, highlands, and the Amazon rainforest.
 
+The HARMONIZE digital toolkits will allow local researchers and users, including national disease control programs, to link, interrogate and use multi-scale spatiotemporal data, to understand the links between environmental change and infectious disease risk in their local context, and to build robust early warning and response systems in low-resource settings.
+
 The project consists of resources and [tools](https://harmonize-tools.github.io/) developed in conjunction with different teams from Brazil, Colombia, Dominican Republic, Peru and Spain.
 
 </details>
-
+  
 ## Organizations
 
 <table>
